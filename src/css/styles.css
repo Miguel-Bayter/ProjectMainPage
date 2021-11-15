@@ -1,0 +1,454 @@
+/*flex direction:*/
+/*es una propiedad del contenedor flex en caul le da la direccion de los objetos ya sea horizontal (row) vertical (column)*/
+
+/*CSS overflow*/
+ /*La propiedad CSS overflow-y define qué se debe mostrar cuando el contenido se desborda de los extremos superior e inferior 
+ de un elemento en bloque. Si overflow-x (en-US) es hidden , scroll o auto y esta propiedad es visible (por defecto) se calculará 
+ implícitamente como auto */
+
+
+/*flex-wrap*/
+/*La propiedad flex-wrap de CSS especifica si los elementos "hijos" son obligados a permanecer en una misma línea o 
+pueden fluir en varias líneas. Si la cobertura (wrap) está permitida, esta propiedad también te permite controlar la 
+dirección en la cual serán apilados los elementos.*/
+
+/*CSS object-fit*/
+/*La propiedad CSS object-fit indica cómo el contenido de un elemento reemplazado, por ejemplo un <img> o <video> , 
+debería redimensionarse para ajustarse a su contenedor. Se puede alterar la alineación del contenido del elemento 
+reemplazado utilizando la propiedad object-position .*/
+
+
+/*variables*/
+
+/*variables*/
+:root{
+    --color1:#b2fefab0;
+    --color2:#0ed0f7b2;
+    --color3: rgba(11,194,211, 0.623); 
+    --color4:#5DC1B9;
+    --color5:#0ed0f7;
+    --fondo:#f2f2f2; 
+    --titulos: 33px;
+    /* --subtitulos: 14px; */
+    --margenes: 60px;
+    --espacios: 10px;
+    --espacios-contenido:45px;
+  }
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:"open sans";
+    background-color: var(--fondo);
+}
+
+img{
+    vertical-align: top;
+}
+
+/*Preloader*/
+
+.hidden{
+  overflow: hidden;
+}
+
+.centrado{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #5dc1b9;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #5DC1B9 transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+/*header*/
+header{
+    width: 100%;
+    height: 600px;
+    background: linear-gradient(to top, var(--color1),var(--color2), var(--color3)), url(/src/assets/img/yo.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+nav{
+    width: 100%;
+    position: fixed;
+    box-shadow: 0 0 10px rgb(0,0,0,.5) ;
+}
+
+.contenedor-nav{
+    display: flex;
+    margin: auto;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    max-width:1000px;
+    height:inherit;
+    overflow: hidden;
+  }
+
+
+/*nav que se muestra arriba*/
+.nav1{
+  background: transparent;
+  height: 80px;
+  color:#fff;
+}
+
+/*nav que se muestra a medida que vas bajando*/
+
+.nav2{
+  background: var(--fondo);
+  height:100px;
+  color:#000;
+}
+
+/*esto se hara con javascript par aque aparezca una o la otra*/
+
+/*le da color a los enlaces tipo a que se encuentren en a*/
+nav .enlaces a{
+    display: inline-block;
+    padding: 5px 0;
+    margin-right: 17px;
+    font-size: 17px;
+    font-weight: 300;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    color: inherit;
+  }
+  
+  
+nav .enlaces a:hover{
+    border-bottom: 3px solid #1498a4;
+    transition: 0.6s;
+}
+
+.logo, .logo img{ 
+  height:80px;
+}
+
+.icono{
+    display:none;
+    font-size: 24px;
+    padding: 23.5px 20px;
+}
+
+
+.textos{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    flex-direction: column; 
+    align-items: center;
+    color:#fff;
+    overflow: hidden;
+    text-align: center;
+}
+
+/*>lo coloca directamente*/
+.textos>h1{font-size:80px;;}
+
+.textos>h2{font-size: 30px; font-weight: 300;}
+
+/*main*/
+
+.contenedor{
+    margin: auto;
+    padding: var(--margenes) 0;
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+    overflow: hidden;
+}
+ 
+.contenedor h3{
+    font-size: var(--titulos);
+    color: var(--color4);
+    margin-bottom: var(--espacios);
+  }
+  
+.contenedor p{
+    font-size: var(--subtitulos);
+    font-weight: 300;
+    color: var(--color4);
+}
+
+.after::after{
+    content:'';
+    display: block;
+    margin: auto;
+    margin-top: var(--espacios);
+    width: 100px;
+    height: 2px;
+    background: var(--color4);
+    margin-bottom: var(--espacios-contenido);
+  }
+
+.card{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.content-card{
+  width: 31%;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,.5);
+  overflow: hidden;
+  height:400px;
+}
+
+.people{
+  height: 80%;
+}
+
+.content-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.texto-team{
+  height: 20%;
+  width: 100%;
+  padding: var(--espacios) 0;
+}
+
+
+.about{
+    background: url(/src/assets/img/banner2.jpg);
+    height: auto;
+  }
+  
+.logros{
+    display: flex;
+    color:#fff;
+    justify-content: space-around;
+    margin: auto;
+    flex-wrap: wrap;
+}
+.caja-logros{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+}
+
+.caja-logros img{
+    width: 30%;
+    height: 30%;
+    object-fit: fill;
+}
+
+.caja-logros>h4{
+    margin-bottom: var(--espacios);
+}
+  
+.caja-logros>p{
+    text-align: center;
+}
+
+
+/*botones de la galeria*/
+.botones-work{
+    overflow: hidden;
+  }
+  
+  .botones-work li{
+    display: inline-block;
+    text-align: center;
+    margin-left: var(--espacios);
+    margin-bottom: var(--espacios-contenido);
+    padding: 6px 12px;
+    border: 1px solid var(--color1);
+    list-style: none;
+    color: var(--color4);
+  }
+  
+.botones-work li:hover{
+    background: var(--color5);
+    color:#fff;
+    cursor: pointer;
+}
+  
+.botones-work .active{
+    background: var(--color5);
+    color:#fff;
+}
+  
+.galeria-work{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+  
+.cont-work{
+    width: 31%;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,.5);
+    height:300px;
+    overflow: hidden;
+    margin-bottom: var(--espacios-contenido);
+}
+  
+.img-work{
+    height: 90%;
+    width: 100%;
+}
+  
+.img-work img{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+  
+.textos-work{
+    height: 10%;
+}
+  
+.textos-work h4{
+    line-height: 30px;
+    font-weight: 300;
+}
+
+footer{
+    background:linear-gradient(to top, var(--color1),var(--color2), var(--color3)), url(/src/assets/img/banner1.jpg);
+}
+
+.marca-logo{
+  width: 40%;
+  margin: auto;
+  margin-bottom: var(--espacios);
+}
+.marca-logo img{
+  width: 50%;
+}
+.iconos{
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  width: 100%;
+}
+.ion{
+    font-size:60px;
+    color: #000000;
+    margin-bottom: var(--espacios);
+    display: inline-block;
+}
+
+/*responsive*/
+
+@media screen and (max-width: 700px){
+  
+.nav2{
+  color: #fff;
+}
+
+.icono{
+  display:block;
+  cursor: pointer;
+}
+
+.enlaces{
+  position: fixed;
+  top:80px;
+  background: #035c5c;
+  left: 0;
+  height: 100%;
+  transition: 1s;
+  width: 0;
+  overflow: hidden;
+  }
+
+.enlaces a{
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 20px;
+  text-align: center;
+  background: #1cb6a9;
+  color:#fff;
+}
+
+.textos>h1{font-size: 70px;}
+.textos>h2{font-size:35px;}
+.content-card{
+  width: 48%;
+  margin-bottom:var(--margenes);
+}
+
+:root{
+  --margenes: 30px;
+}
+}
+
+@media screen and (max-width: 500px){
+  
+:root{
+  --espacios-contenido: 25px;
+}
+
+.content-card{
+  width: 90%;
+}
+
+.caja-logros{
+  width: 90%;
+  margin-bottom: var(--margenes);
+}
+
+.cont-work{
+  width: 85%;
+}
+
+.marca-logo{
+  width: 80%;
+}
+
+.iconos{
+  margin: auto;
+}
+}
